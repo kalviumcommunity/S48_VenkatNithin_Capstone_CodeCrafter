@@ -1,0 +1,112 @@
+.homepage {
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: #1e1e1e;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #0d0d0d;
+  }
+  
+  .header h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .auth-buttons {
+    display: flex;
+  }
+  
+  .login-button,
+  .register-button {
+    background-color: #009688;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .register-button {
+    background-color: #00695c;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  .hero h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .enroll-button {
+    background-color: #009688;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .features {
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .features h3 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .feature-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .feature-card {
+    background-color: #2c2c2c;
+    padding: 20px;
+    width: 300px;
+    margin: 10px;
+    border-radius: 8px;
+    text-align: left;
+  }
+  
+  .faq {
+    padding: 50px 20px;
+    background-color: #141414;
+    text-align: center;
+  }
+  
+  .faq h3 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .faq-questions {
+    text-align: left;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .faq-questions div {
+    margin-bottom: 20px;
+  }
+  
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #0d0d0d;
+    font-size: 14px;
+  }
+  
+  .footer p {
+    margin: 5px 0;
+  }
+  
