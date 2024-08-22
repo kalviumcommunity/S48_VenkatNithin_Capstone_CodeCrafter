@@ -1,0 +1,232 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1c;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  .homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Header Styles */
+  .header {
+    width: 100%;
+    padding: 20px;
+    background-color: #131313;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-link {
+    margin-right: 20px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .nav-button {
+    padding: 10px 20px;
+    background-color: #3b88c3;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  /* Hero Section Styles */
+  .hero {
+    text-align: center;
+    margin: 50px 0;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+  
+  .hero h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .enroll-button {
+    padding: 15px 30px;
+    background-color: #3b88c3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Features Section Styles */
+  .features {
+    text-align: center;
+    margin: 50px 0;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+  
+  .features-title {
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #ccc;
+  }
+  
+  .features h3 {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr); /* Two-column layout for wider screens */
+    }
+  }
+  
+  .feature {
+    padding: 20px;
+    background-color: #A9D5DD;
+    border-radius: 10px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+  
+  .feature h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #000000;
+  }
+  
+  .feature p {
+    font-size: 16px;
+    color: #000000;
+  }
+  
+  /* Join Section Styles */
+  .join-section {
+    width: 100%;
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #1c1c1c; /* Background color matching the overall theme */
+    box-sizing: border-box;
+  }
+  
+  .join-section h3 {
+    font-size: 32px;
+    margin: 0;
+    color: #fff;
+  }
+  
+  /* FAQ Section Styles */
+  .faq {
+    width: 100%;
+    background-color: #2A3233;
+    padding: 40px 20px;
+    color: #ccc;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+  
+  .faq-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .faq-content {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  
+  .faq-questions {
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .faq-questions {
+      width: 40%;
+    }
+  }
+  
+  .faq-questions h4 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .faq-questions ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .faq-questions li {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .faq-answers {
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .faq-answers {
+      width: 55%;
+    }
+  }
+  
+  .faq-answers p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    width: 100%;
+    padding: 20px 20px;
+    background-color: #131313;
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+  
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .footer-nav a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .footer p {
+    font-size: 24px;
+    font-weight: bold;
+  }
