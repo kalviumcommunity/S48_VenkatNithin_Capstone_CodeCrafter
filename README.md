@@ -2,6 +2,9 @@
 # Created by: Venkat Nithin M
 # Capstone project
 
+# Backend deployed link:
+https://s48-venkatnithin-capstone-codecrafter.onrender.com
+
 IDEA BRIEF:
 Welcome to CodeCrafter, your premier destination for game development education and collaboration! CodeCrafter is designed to equip aspiring game developers with the knowledge and skills necessary to excel in the world of game design and programming.
 
