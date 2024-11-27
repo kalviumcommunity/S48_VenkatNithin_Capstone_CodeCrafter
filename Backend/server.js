@@ -68,6 +68,54 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+// GET API to fetch user details by email
+app.get('/api/profile/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+    const user = await Signup.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json(user);
+  } catch (error) {
+    console.error('Error fetching user profile:', error);
+    res.status(500).json({ message: 'Error fetching user profile', error });
+  }
+});
+
+// PUT API to update user details
+app.put('/api/profile/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+    const { name, username, password } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ message: 'Email is required' });
+    }
+
+    // Find user by email
+    const user = await Signup.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Update the user's details
+    user.name = name || user.name;
+    user.username = username || user.username;
+    user.password = password || user.password; // In production, ensure hashing of new password
+
+    await user.save(); // Save the updated user data
+
+    res.json(user);
+  } catch (error) {
+    console.error('Error updating user profile:', error);
+    res.status(500).json({ message: 'Error updating user profile', error });
+  }
+});
+
 // Define the ping route with the response in JSON
 app.get('/ping', (req, res) => {
   res.json({ message: 'pong' });
