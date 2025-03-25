@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const ProfilePage = () => {
-  const [userDetails, setUserDetails] = useState(null); // null indicates no data fetched yet
+  const [userDetails, setUserDetails] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -12,6 +13,7 @@ const ProfilePage = () => {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // To redirect to HomePage after deletion
 
   // Fetch current user details
   useEffect(() => {
@@ -31,7 +33,7 @@ const ProfilePage = () => {
           email: response.data.email,
           password: response.data.password,
         });
-        setError(null); // Clear previous errors
+        setError(null);
       } catch (err) {
         setError(err.message || 'Error fetching user details.');
       } finally {
@@ -51,13 +53,29 @@ const ProfilePage = () => {
   // Handle save changes
   const handleSave = async () => {
     try {
-      const response = await axios.put(`http://localhost:3000/api/profile/${formData.email}`, formData);
+      const response = await axios.put(`http://localhost:3000/api/profile/${userDetails.email}`, formData);
       setUserDetails(response.data);
       setIsEditing(false);
       alert('Profile updated successfully!');
     } catch (err) {
       console.error('Error updating profile:', err);
       alert('Failed to update profile. Please try again later.');
+    }
+  };
+
+  // Handle delete user
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm('Are you sure you want to delete your profile? This action cannot be undone.');
+    if (confirmDelete) {
+      try {
+        await axios.delete(`http://localhost:3000/api/profile/${userDetails.email}`);
+        localStorage.removeItem('userEmail'); // Clear localStorage
+        alert('Profile deleted successfully.');
+        navigate('/'); // Redirect to HomePage after deletion
+      } catch (err) {
+        console.error('Error deleting profile:', err);
+        alert('Failed to delete profile. Please try again later.');
+      }
     }
   };
 
@@ -119,7 +137,12 @@ const ProfilePage = () => {
           <p><strong>Name:</strong> {userDetails.name}</p>
           <p><strong>Username:</strong> {userDetails.username}</p>
           <p><strong>Email:</strong> {userDetails.email}</p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
+          <div className="button-container">
+            <button onClick={() => setIsEditing(true)}>Edit</button>
+            <button onClick={handleDelete} style={{ marginLeft: '10px', backgroundColor: 'red', color: 'white' }}>
+              Delete
+            </button>
+          </div>
         </div>
       )}
     </div>

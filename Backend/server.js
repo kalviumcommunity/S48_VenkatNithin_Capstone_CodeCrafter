@@ -116,6 +116,29 @@ app.put('/api/profile/:email', async (req, res) => {
   }
 });
 
+// DELETE API to delete user by email
+app.delete('/api/profile/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    if (!email) {
+      return res.status(400).json({ message: 'Email is required' });
+    }
+
+    const user = await Signup.findOneAndDelete({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json({ message: 'User deleted successfully.' });
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).json({ message: 'Error deleting user', error });
+  }
+});
+
+
 // Define the ping route with the response in JSON
 app.get('/ping', (req, res) => {
   res.json({ message: 'pong' });
