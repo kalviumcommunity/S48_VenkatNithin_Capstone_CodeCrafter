@@ -13,7 +13,7 @@ const ProfilePage = () => {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // To redirect to HomePage after deletion
+  const navigate = useNavigate(); // To navigate to other pages
 
   // Fetch current user details
   useEffect(() => {
@@ -79,6 +79,11 @@ const ProfilePage = () => {
     }
   };
 
+  // Handle continue button to navigate to CoursePage1
+  const handleContinue = () => {
+    navigate('/course1');
+  };
+
   // Handle cancel edit
   const handleCancel = () => {
     setFormData({
@@ -139,8 +144,17 @@ const ProfilePage = () => {
           <p><strong>Email:</strong> {userDetails.email}</p>
           <div className="button-container">
             <button onClick={() => setIsEditing(true)}>Edit</button>
-            <button onClick={handleDelete} style={{ marginLeft: '10px', backgroundColor: 'red', color: 'white' }}>
+            <button
+              onClick={handleDelete}
+              style={{ marginLeft: '10px', backgroundColor: 'red', color: 'white' }}
+            >
               Delete
+            </button>
+          </div>
+          {/* Continue Button to navigate to CoursePage1 */}
+          <div className="continue-container">
+            <button onClick={handleContinue} className="continue-btn">
+              Continue
             </button>
           </div>
         </div>
