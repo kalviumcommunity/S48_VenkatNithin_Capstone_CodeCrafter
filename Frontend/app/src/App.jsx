@@ -18,6 +18,8 @@ function App() {
         {/* Route for Signup Page */}
         <Route path="/register" element={<Signup />} />
 
+        
+
         {/* Route for Profile Page */}
         <Route path="/profile" element={<ProfilePage />} />
       </Routes>

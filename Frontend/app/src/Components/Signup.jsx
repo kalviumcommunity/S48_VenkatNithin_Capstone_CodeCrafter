@@ -17,7 +17,7 @@ const Signup = () => {
       const response = await axios.post('http://localhost:3000/api/signup', { name, username, email, password });
       console.log('Signup successful:', response.data);
       // Redirect to SelectionPage upon success
-      navigate('/selection');
+      navigate('/profile');
     } catch (error) {
       console.error('Signup failed:', error);
     }
