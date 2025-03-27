@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './ProfilePage.css'; // Import the CSS file
 
 const ProfilePage = () => {
   const [userDetails, setUserDetails] = useState(null);
@@ -13,7 +14,7 @@ const ProfilePage = () => {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // To navigate to other pages
+  const navigate = useNavigate();
 
   // Fetch current user details
   useEffect(() => {
@@ -53,7 +54,10 @@ const ProfilePage = () => {
   // Handle save changes
   const handleSave = async () => {
     try {
-      const response = await axios.put(`http://localhost:3000/api/profile/${userDetails.email}`, formData);
+      const response = await axios.put(
+        `http://localhost:3000/api/profile/${userDetails.email}`,
+        formData
+      );
       setUserDetails(response.data);
       setIsEditing(false);
       alert('Profile updated successfully!');
@@ -65,13 +69,15 @@ const ProfilePage = () => {
 
   // Handle delete user
   const handleDelete = async () => {
-    const confirmDelete = window.confirm('Are you sure you want to delete your profile? This action cannot be undone.');
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete your profile? This action cannot be undone.'
+    );
     if (confirmDelete) {
       try {
         await axios.delete(`http://localhost:3000/api/profile/${userDetails.email}`);
-        localStorage.removeItem('userEmail'); // Clear localStorage
+        localStorage.removeItem('userEmail');
         alert('Profile deleted successfully.');
-        navigate('/'); // Redirect to HomePage after deletion
+        navigate('/');
       } catch (err) {
         console.error('Error deleting profile:', err);
         alert('Failed to delete profile. Please try again later.');
@@ -95,70 +101,82 @@ const ProfilePage = () => {
     setIsEditing(false);
   };
 
-  if (loading) return <div>Loading...</div>;
+  // Handle logout
+  const handleLogout = () => {
+    localStorage.removeItem('userEmail');
+    navigate('/');
+  };
 
-  if (error) return <div className="error-message">Error: {error}</div>;
+  if (loading) return <div className="Profile-container">Loading...</div>;
+  if (error) return <div className="Profile-container error-message">Error: {error}</div>;
 
   return (
     <div className="Profile-container">
-      <h1>Welcome to Your Profile</h1>
-      {isEditing ? (
-        <div className="edit-container">
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Name"
-          />
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            placeholder="Username"
-          />
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email"
-          />
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Password"
-          />
-          <div className="button-container">
-            <button onClick={handleSave}>Save</button>
-            <button onClick={handleCancel}>Cancel</button>
+      <div className="profile-box">
+        <h1>Welcome to Your Profile</h1>
+
+        {isEditing ? (
+          <div className="edit-container">
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Name"
+            />
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              placeholder="Username"
+            />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email"
+            />
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Password"
+            />
+
+            <div className="button-grid">
+              <button onClick={handleSave}>Save</button>
+              <button onClick={handleCancel}>Cancel</button>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="view-container">
-          <p><strong>Name:</strong> {userDetails.name}</p>
-          <p><strong>Username:</strong> {userDetails.username}</p>
-          <p><strong>Email:</strong> {userDetails.email}</p>
-          <div className="button-container">
-            <button onClick={() => setIsEditing(true)}>Edit</button>
-            <button
-              onClick={handleDelete}
-              style={{ marginLeft: '10px', backgroundColor: 'red', color: 'white' }}
-            >
-              Delete
-            </button>
+        ) : (
+          <div className="view-container">
+            <p>
+              <strong>Name:</strong> {userDetails.name}
+            </p>
+            <p>
+              <strong>Username:</strong> {userDetails.username}
+            </p>
+            <p>
+              <strong>Email:</strong> {userDetails.email}
+            </p>
+
+            <div className="button-grid">
+              <button onClick={() => setIsEditing(true)}>Edit</button>
+              <button className="delete-button" onClick={handleDelete}>
+                Delete
+              </button>
+            </div>
+
+            <div className="button-grid" style={{ marginTop: '20px' }}>
+              <button onClick={handleContinue}>Continue</button>
+              <button onClick={handleLogout}>Logout</button>
+            </div>
           </div>
-          {/* Continue Button to navigate to CoursePage1 */}
-          <div className="continue-container">
-            <button onClick={handleContinue} className="continue-btn">
-              Continue
-            </button>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

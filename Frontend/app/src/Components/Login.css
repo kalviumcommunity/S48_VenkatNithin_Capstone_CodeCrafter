@@ -1,126 +1,135 @@
 /* Container for the entire login page */
 .login-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #1c1c1c;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-left: 550px;
-  }
-  
-  /* Header with CODECRAFTER title */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     /* Centers content vertically */
+  align-items: center;         /* Centers content horizontally */
+  height: 100vh;
+  background-color: #1c1c1c;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;              /* Center the container horizontally */
+}
+
+/* Header with CODECRAFTER title */
+.login-header {
+  text-align: center;          /* Center header content */
+  margin: 0;
+  margin-bottom: 20px;         /* Added gap between header and container */
+}
+
+/* Remove underline from CODECRAFTER link and style the text */
+.login-header a {
+  text-decoration: none;
+  color: white;
+}
+
+.login-header h1 {
+  color: white;
+  font-size: 2.5em;
+  margin-bottom: 0;            /* Remove extra margin from h1 */
+}
+
+/* Login card styling */
+.login-box {
+  background-color: #2c2f33;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto; /* Ensure it's centered within the container */
+}
+
+/* Title inside login box */
+.login-box h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Input group styling */
+.input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Label for each input */
+.input-group label {
+  color: white;
+  margin-bottom: 5px;
+}
+
+/* Input field styling */
+.input-group input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+
+/* Login button styling */
+.login-button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #3b88c3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Text and link in the login box */
+.login-box p {
+  color: white;
+  margin-top: 20px;
+}
+
+.login-box a {
+  color: #00acee;
+  text-decoration: none;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
   .login-header h1 {
-    color: white;
-    font-size: 2.5em;
-    text-align: center;
-    margin-bottom: 30px;
-    margin-left: 55px;
+    font-size: 2em;
+    margin-bottom: 20px;
   }
-  
-  /* Login card styling */
+
   .login-box {
-    background-color: #2c2f33;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto; /* Ensure it's centered */
+    padding: 30px;
+    max-width: 90%;
   }
-  
-  /* Title inside login box */
-  .login-box h2 {
-    color: white;
-    margin-bottom: 20px;
-  }
-  
-  /* Input group styling */
-  .input-group {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-  
-  /* Label for each input */
-  .input-group label {
-    color: white;
-    margin-bottom: 5px;
-  }
-  
-  /* Input field styling */
+
   .input-group input {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    width: 100%;
+    padding: 8px;
   }
-  
-  /* Login button styling */
+
   .login-button {
-    padding: 10px 20px;
-    margin-top: 20px;
-    background-color: #3b88c3;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
+    padding: 10px;
   }
-  
-  /* Text and link in the login box */
-  .login-box p {
-    color: white;
-    margin-top: 20px;
+}
+
+/* Media query for very small screens (mobile phones) */
+@media (max-width: 480px) {
+  .login-header h1 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
   }
-  
-  .login-box a {
-    color: #00acee;
-    text-decoration: none;
+
+  .login-box {
+    padding: 20px;
   }
-  
-  /* Media query for smaller screens */
-  @media (max-width: 768px) {
-    .login-header h1 {
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-  
-    .login-box {
-      padding: 30px;
-      max-width: 90%;
-    }
-  
-    .input-group input {
-      padding: 8px;
-    }
-  
-    .login-button {
-      padding: 10px;
-    }
+
+  .input-group input {
+    padding: 7px;
   }
-  
-  /* Media query for very small screens (mobile phones) */
-  @media (max-width: 480px) {
-    .login-header h1 {
-      font-size: 1.8em;
-      margin-bottom: 15px;
-    }
-  
-    .login-box {
-      padding: 20px;
-    }
-  
-    .input-group input {
-      padding: 7px;
-    }
-  
-    .login-button {
-      padding: 8px;
-    }
+
+  .login-button {
+    padding: 8px;
   }
-  
+}

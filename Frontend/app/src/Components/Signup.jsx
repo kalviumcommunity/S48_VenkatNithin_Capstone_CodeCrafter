@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Signup.css';
 
@@ -8,16 +8,26 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3000/api/signup', { name, username, email, password });
-      console.log('Signup successful:', response.data);
-      // Redirect to SelectionPage upon success
-      navigate('/profile');
+      const response = await axios.post('http://localhost:3000/api/signup', {
+        name,
+        username,
+        email,
+        password,
+      });
+
+      if (response.data) {
+        // Save email to localStorage after successful signup
+        localStorage.setItem('userEmail', email);
+        console.log('Signup successful:', response.data);
+        // Redirect to ProfilePage
+        navigate('/profile');
+      }
     } catch (error) {
       console.error('Signup failed:', error);
     }
