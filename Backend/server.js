@@ -2,7 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+
+
+const Course = require('../Backend/Models/Course');
 dotenv.config();
+
 
 const app = express();
 const port = process.env.PUBLIC_PORT || 3000;
@@ -137,6 +141,44 @@ app.delete('/api/profile/:email', async (req, res) => {
     res.status(500).json({ message: 'Error deleting user', error });
   }
 });
+
+app.post('/api/course', async (req, res) => {
+  try {
+    const newCourse = new Course(req.body);
+    await newCourse.save();
+    res.status(201).json(newCourse);
+  } catch (error) {
+    res.status(400).json({ message: 'Error adding course', error });
+  }
+});
+
+
+// GET API to fetch course by ID
+app.get('/api/course/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const course = await Course.findById(id);
+
+    if (!course) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+
+    res.json(course);
+  } catch (error) {
+    console.error('Error fetching course data:', error);
+    res.status(500).json({ message: 'Error fetching course data', error });
+  }
+});
+
+app.get('/api/courses', async (req, res) => {
+  try {
+    const courses = await Course.find();
+    res.json(courses);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching courses', error });
+  }
+});
+
 
 
 // Define the ping route with the response in JSON
