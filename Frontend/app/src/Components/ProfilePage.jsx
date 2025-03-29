@@ -87,7 +87,7 @@ const ProfilePage = () => {
 
   // Handle continue button to navigate to CoursePage1
   const handleContinue = () => {
-    navigate('/course1');
+    navigate('/course1'); // Redirect to CoursePage1
   };
 
   // Handle cancel edit

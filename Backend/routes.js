@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/signup');
+const Course = require('../models/Course');
 const bcrypt = require('bcrypt');
 
 // Handle signup
@@ -79,6 +80,31 @@ router.put('/profile/:email', async (req, res) => {
   } catch (error) {
     console.error('Error updating user profile:', error);
     res.status(500).json({ message: 'Error updating user profile', error });
+  }
+});
+
+// POST API to add a course
+app.post('/api/courses', async (req, res) => {
+  try {
+    const { title, description, videoLink } = req.body;
+    const newCourse = new Course({ title, description, videoLink });
+    await newCourse.save();
+    res.status(201).json(newCourse);
+  } catch (error) {
+    res.status(400).json({ message: 'Error adding course', error });
+  }
+});
+
+// GET API to fetch course by ID
+app.get('/api/courses/:id', async (req, res) => {
+  try {
+    const course = await Course.findById(req.params.id);
+    if (!course) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+    res.json(course);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching course', error });
   }
 });
 
