@@ -1,0 +1,147 @@
+/* General Styles for Course Page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1c1c1c;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main Container */
+.course-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Course Box Styling */
+.course-box {
+  background-color: #2A3233;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 900px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Title */
+.course-box h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+/* Description */
+.course-box p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* Course Content Section */
+.course-content {
+  margin-top: 30px;
+}
+
+.course-content h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #A9D5DD;
+}
+
+.course-content strong {
+  color: #ffffff;
+  font-size: 18px;
+  display: block;
+  margin-top: 20px;
+}
+
+.course-content em {
+  color: #A9D5DD;
+  font-style: italic;
+}
+
+/* Video Section */
+.video-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.video-container iframe {
+  width: 100%;
+  max-width: 100%;
+  height: 315px;
+  border-radius: 10px;
+  border: none;
+}
+
+/* Responsive Layout */
+@media (min-width: 768px) {
+  .video-container iframe {
+    width: 560px;
+    height: 315px;
+  }
+}
+
+/* Error Message */
+.error-message {
+  color: #ff6b6b;
+  text-align: center;
+  font-weight: bold;
+  padding: 20px;
+}
+
+/* CODECRAFTER Header */
+.course-header {
+  width: 100%;
+  background-color: #1c1c1c;
+  padding: 20px 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.logo-link {
+  font-size: 28px;
+  font-weight: bold;
+  color: #A9D5DD;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.logo-link:hover {
+  color: #ffffff;
+}
+
+.top-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.site-title {
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #2c3e50;
+}
+
+.discussion-section {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 2px solid #ccc;
+}
+
+.comment-list {
+  margin-top: 20px;
+}
+
+.comment-card {
+  background: #f7f7f7;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
